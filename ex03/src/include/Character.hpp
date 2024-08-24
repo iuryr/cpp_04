@@ -5,6 +5,8 @@
 #include "AMateria.hpp"
 
 #define INVENTORY_SIZE 4
+#define FLOOR_SIZE 100
+
 
 class Character: public ICharacter
 {

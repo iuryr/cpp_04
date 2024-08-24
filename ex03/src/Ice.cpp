@@ -1,5 +1,6 @@
 #include "Ice.hpp"
 #include "AMateria.hpp"
+#include "qolMacros.hpp"
 
 Ice::Ice(void): AMateria()
 {
@@ -10,7 +11,7 @@ Ice::~Ice(void)
 {
 }
 
-Ice::Ice(const Ice& obj)
+Ice::Ice(const Ice& obj): AMateria(obj)
 {
 	*this = obj;
 }
@@ -34,5 +35,5 @@ AMateria* Ice::clone(void) const
 
 void Ice::use(ICharacter& target)
 {
-	//TODO
+	println("* shoots an ice bolt at " << target.getName() << " *");
 }

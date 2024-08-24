@@ -1,5 +1,6 @@
 #include "Cure.hpp"
 #include "AMateria.hpp"
+#include "qolMacros.hpp"
 
 Cure::Cure(void): AMateria()
 {
@@ -34,5 +35,5 @@ AMateria* Cure::clone(void) const
 
 void Cure::use(ICharacter& target)
 {
-	//TODO
+	println("* heals " << target.getName() << " wounds*");
 }
