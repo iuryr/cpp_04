@@ -1,5 +1,6 @@
 #include "Character.hpp"
 #include "qolMacros.hpp"
+#include "Floor.hpp"
 
 Character::Character(void): _name("DefaultName")
 {
@@ -30,13 +31,26 @@ Character::~Character(void)
 
 Character::Character(const Character& obj)
 {
-	*this = obj;
+	this->_name = obj.getName();
+	for (int i = 0; i < INVENTORY_SIZE; i++)
+	{
+		if (obj._inventory[i] != NULL)
+		{
+			this->_inventory[i] = obj._inventory[i]->clone();
+		}
+		else
+		{
+			this->_inventory[i] = NULL;
+		}
+	}
 }
 
 Character& Character::operator=(const Character& obj)
 {
-	if (this != & obj)
+	if (this != &obj)
 	{
+		this->_name = obj.getName();
+
 		for (int i = 0; i < INVENTORY_SIZE; i++)
 		{
 			if (this->_inventory[i] != NULL)
@@ -74,6 +88,22 @@ void Character::equip(AMateria* m)
 			return;
 		}
 	}
+	delete m;
+}
+
+void Character::unequip(int idx)
+{
+	if (idx < 0 || idx >= INVENTORY_SIZE)
+	{
+		return;
+	}
+	if (this->_inventory[idx] == NULL)
+	{
+		return;
+	}
+	Floor::addMateria(this->_inventory[idx]);
+	println("Dropped " << this->_inventory[idx]->getType() << " materia on the floor.");
+	this->_inventory[idx] = NULL;
 }
 
 void Character::use(int idx, ICharacter& target)

@@ -9,7 +9,11 @@ SRC_FILES = $(addprefix $(SRC_DIR), \
 			AMateria.cpp \
 			Ice.cpp \
 			Cure.cpp \
-			Character.cpp)
+			Character.cpp \
+			Floor.cpp \
+			MateriaSource.cpp \
+			main.cpp)
+
 OBJ_DIR = obj/
 OBJ_FILES = $(addprefix $(OBJ_DIR), $(notdir $(SRC_FILES:.cpp=.o)))
 
