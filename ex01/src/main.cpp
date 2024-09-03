@@ -42,6 +42,18 @@ int main(void)
 	println("Copy constructed still has access to its own brain");
 	dog2.printFiveIdeas();
 
+	println("\n###Deep copies - assignment operator");
+	println("Generating copy source");
+	Cat* cat1 = new Cat;
+	println("Assignment Operation from default constructor...");
+	Cat cat2;
+	cat2 = *cat1;
+	println("Deleting copy source");
+	delete cat1;
+	println("Copy constructed still has access to its own brain");
+	cat2.printFiveIdeas();
+
+
 	//uncomment below to segfault
 	// println("###Shallow Copie example");
 	// println("Generating copy source");
