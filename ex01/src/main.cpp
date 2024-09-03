@@ -46,8 +46,7 @@ int main(void)
 	println("Generating copy source");
 	Cat* cat1 = new Cat;
 	println("Assignment Operation from default constructor...");
-	Cat cat2;
-	cat2 = *cat1;
+	Cat cat2 = *cat1;
 	println("Deleting copy source");
 	delete cat1;
 	println("Copy constructed still has access to its own brain");
